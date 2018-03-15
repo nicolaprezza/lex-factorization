@@ -5,7 +5,7 @@
 using namespace std;
 using namespace sdsl;
 
-namespace bwsnp{
+namespace lex{
 
 /*
  * extended compressed suffix array: SA, LCP, text, BWT
@@ -13,7 +13,7 @@ namespace bwsnp{
  * the LCP is stored using less bits for shorter values
  * the SA by default is not compressed. Specify csa_sada<> or csa_wt<> in template arg
  */
-template<class sa_type = csa_bitcompressed<>>
+template<class sa_type = csa_bitcompressed<> >
 class e_csa{
 
 public:
@@ -69,7 +69,7 @@ public:
 
 
 	sa_type SA_;
-	lcp_wt<> LCP_;
+	lcp_bitcompressed<> LCP_;
 
 
 };
