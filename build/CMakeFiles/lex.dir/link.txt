@@ -1,1 +1,0 @@
-/usr/bin/c++   --std=c++11 -g -ggdb -Ofast -fstrict-aliasing -DNDEBUG -march=native   CMakeFiles/lex.dir/lex.cpp.o  -o lex  -L/home/nico/lib -rdynamic -lsdsl -ldivsufsort -ldivsufsort64 -Wl,-rpath,/home/nico/lib 

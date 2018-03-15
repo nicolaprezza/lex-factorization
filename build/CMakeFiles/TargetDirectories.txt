@@ -1,3 +1,0 @@
-/home/nico/workspace/lex-factorization/build/CMakeFiles/edit_cache.dir
-/home/nico/workspace/lex-factorization/build/CMakeFiles/rebuild_cache.dir
-/home/nico/workspace/lex-factorization/build/CMakeFiles/lex.dir
