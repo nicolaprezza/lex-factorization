@@ -33,7 +33,10 @@ int main(int argc, char** argv){
 
 	if(argc==3) trailing = true;
 
-	e_csa<> salcp(input);
+	e_csa<csa_sada<> > salcp(input);
+	//e_csa<csa_wt<> > salcp(input);
+	//e_csa<> salcp(input);
+
 	auto n = salcp.size()-1;//text's size
 
 	/*cout << "SA size = " << salcp.size() << endl;
