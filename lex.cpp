@@ -33,11 +33,11 @@ int main(int argc, char** argv){
 
 	if(argc==3) trailing = true;
 
-	e_csa<csa_sada<> > salcp(input);
+	e_csa<csa_sada<> > csa(input);
 	//e_csa<csa_wt<> > salcp(input);
 	//e_csa<> salcp(input);
 
-	auto n = salcp.size()-1;//text's size
+	auto n = csa.size()-1;//text's size
 
 	/*cout << "SA size = " << salcp.size() << endl;
 	cout << "SA = " << endl;
@@ -56,6 +56,25 @@ int main(int argc, char** argv){
 	cout << "\nBWT = " << endl;
 	for(uint64_t i=0;i<n+1;++i) cout << (salcp.BWT(i)==0?'#':salcp.BWT(i));cout << endl;*/
 
+	//count BWT runs
+
+
+	uint64_t R = 1;
+
+	char prev = csa.BWT(0);
+
+	for(uint64_t j=0;j<n+1;++j){
+
+		char c = csa.BWT(j);
+
+		if(c != prev){
+
+			++R;
+			prev = c;
+
+		}
+
+	}
 
 	uint64_t j_=0, l_=0, s_=0, v=0;
 	uint64_t j=0, l=0, s=0;
@@ -75,9 +94,9 @@ int main(int argc, char** argv){
 			s_=s;
 
 			j = v == 0 ? 0 : j_ + l_+1;
-			l = salcp.LCP(salcp.ISA(j));
-			s = l > 0 ? salcp.SA(salcp.ISA(j)-1) : 0;
-			c = j+l < n ? salcp.TEXT(j+l) : '#';
+			l = csa.LCP(csa.ISA(j));
+			s = l > 0 ? csa.SA(csa.ISA(j)-1) : 0;
+			c = j+l < n ? csa.TEXT(j+l) : '#';
 
 			//cout << "(" << s << "," << l << "," << c << ")  ";
 
@@ -90,7 +109,7 @@ int main(int argc, char** argv){
 
 		while(j < n){
 
-			l = salcp.LCP(salcp.ISA(j));
+			l = csa.LCP(csa.ISA(j));
 
 			//smallest char in lex order
 			if(l == 0){
@@ -100,7 +119,7 @@ int main(int argc, char** argv){
 
 			}else{
 
-				s = salcp.SA(salcp.ISA(j)-1);
+				s = csa.SA(csa.ISA(j)-1);
 				j = j + l;
 
 				//cout << "(" << s << "," << l << ")  ";
@@ -116,7 +135,8 @@ int main(int argc, char** argv){
 	cout << endl;
 
 	cout << "Computed parse " << (trailing?" with ":" without ") << "trailing character." << endl;
-	cout << "Number of phrases: " << v << endl;
+	cout << "Number of BWT runs: r = " << R << endl;
+	cout << "Number of phrases: v = " << v << endl;
 
 
 }
