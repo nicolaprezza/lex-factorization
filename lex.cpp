@@ -58,24 +58,6 @@ int main(int argc, char** argv){
 
 	//count BWT runs
 
-
-	uint64_t R = 1;
-
-	char prev = csa.BWT(0);
-
-	for(uint64_t j=0;j<n+1;++j){
-
-		char c = csa.BWT(j);
-
-		if(c != prev){
-
-			++R;
-			prev = c;
-
-		}
-
-	}
-
 	uint64_t j_=0, l_=0, s_=0, v=0;
 	uint64_t j=0, l=0, s=0;
 
@@ -135,7 +117,6 @@ int main(int argc, char** argv){
 	cout << endl;
 
 	cout << "Computed parse " << (trailing?" with ":" without ") << "trailing character." << endl;
-	cout << "Number of BWT runs: r = " << R << endl;
 	cout << "Number of phrases: v = " << v << endl;
 
 
